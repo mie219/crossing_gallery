@@ -1,0 +1,11 @@
+{
+  "name": "crossing_gallery",
+  "description": "This is a web service which can search several image sharing service and display it.",
+  "keywords": [
+    "gallery"
+  ],
+  "version": "0.0.1",
+  "dependencies": {
+    "node-web-server": ""
+  }
+}

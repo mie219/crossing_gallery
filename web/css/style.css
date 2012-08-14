@@ -1,0 +1,91 @@
+#img-grid {
+  background: url("../img/160x160.gif") repeat;
+  position: relative;
+  margin: auto;
+  min-height: 176px;
+}
+
+#img-grid section {
+  background-image: url("http://placehold.it/160x160");
+  margin: 8px;
+  min-width: 160px;
+  min-height: 160px;
+  float: left;
+}
+
+#img-grid section.grid1x2 {
+  background-image: url("http://placehold.it/160x336;");
+  height: 336px;
+}
+
+#img-grid section.grid2x1 {
+  background-image: url("http://placehold.it/336x160");
+  width: 336px;
+}
+
+#img-grid section.grid2x2 {
+  background-image: url("http://placehold.it/336x336");
+  width: 336px;
+  height: 336px;
+}
+
+@media screen and (min-width: 352px) {
+  #img-grid {
+    width: 352px;
+  }
+}
+
+@media screen and (min-width: 528px) {
+  #img-grid {
+    width: 528px;
+  }
+}
+
+@media screen and (min-width: 704px) {
+  #img-grid {
+    width: 704px;
+  }
+}
+
+@media screen and (min-width: 880px) {
+  #img-grid {
+    width: 880px;
+  }
+}
+
+@media screen and (min-width: 1056px) {
+  #img-grid {
+    width: 1056px;
+  }
+}
+
+@media screen and (min-width: 1232px) {
+  #img-grid {
+    width: 1232px;
+  }
+}
+
+#overray {
+  position: absolute;
+  top: 184px;
+  width: 100%;
+}
+
+#overray div.inner {
+  background: rgba(255, 255, 255, 0.8);
+  position: relative;
+  width: 50%;
+  min-width: 176px;
+  padding: 16px;
+  margin: auto;
+}
+
+#overay div.inner {
+  position: relative;
+  width: 60%;
+}
+
+footer {
+  height: 30px;
+  text-align: center;
+}

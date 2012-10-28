@@ -1,18 +1,8 @@
-lib-cov
-*.seed
-*.log
-*.csv
-*.dat
-*.out
-*.pid
-*.gz
-
-pids
-logs
-results
+.*
+!.gitignore
+Thumbs.db
 
 node_modules
 npm-debug.log
 
-Thumbs.db
-.DS_Store
+logs

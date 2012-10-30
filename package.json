@@ -6,7 +6,18 @@
   ],
   "version": "0.0.1",
   "dependencies": {
-    "node-web-server": "",
-    "http-proxy": ""
+    "node-web-server": "1.1.2",
+    "http-proxy": "0.8.4",
+    "cheerio": "0.10.1"
+  },
+  "devDependencies": {
+    "mocha": "1.6.0",
+    "should": "1.2.0"
+  },
+  "scripts": {
+    "test": "node_modules/.bin/mocha"
+  },
+  "engines": {
+    "node": "0.8.x"
   }
 }

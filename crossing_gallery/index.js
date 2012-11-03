@@ -30,7 +30,7 @@ function CrossingGallery() {
           res.writeHead(403, {});
         } else
           res.writeHead(404, {});
-      }　else
+      } else
         res.writeHead(404, {});
       
       console.log(path, ctrl);

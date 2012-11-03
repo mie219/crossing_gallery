@@ -1,5 +1,5 @@
 /**
- * apis/index.js
+ * crossing_gallery/apis/index.js
  * API index
  */
 

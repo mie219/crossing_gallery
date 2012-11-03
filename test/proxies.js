@@ -3,7 +3,7 @@
  * proxies test
  */
 
-var CrossingGallery = require("../lib/crossing_gallery"),
+var CrossingGallery = require("../crossing_gallery"),
     should = require("should");
 
 var cg = new CrossingGallery();

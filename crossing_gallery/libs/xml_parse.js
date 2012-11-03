@@ -1,5 +1,5 @@
 /**
- * lib/xml_parse.js
+ * crossing_gallery/libs/xml_parse.js
  * XML parser wrapper
  */
 

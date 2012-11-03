@@ -15,7 +15,9 @@
     "should": "1.2.0"
   },
   "scripts": {
-    "test": "node_modules/.bin/mocha"
+    "test": "node_modules/.bin/mocha",
+    "install": "node installer/install",
+    "uninstall": "node installer/uninstall"
   },
   "engines": {
     "node": "0.8.x"

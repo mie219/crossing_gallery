@@ -1,5 +1,5 @@
 /**
- * modules/index.js
+ * crossing_gallery/modules/index.js
  * module index
  */
 

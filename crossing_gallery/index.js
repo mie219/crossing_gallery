@@ -1,16 +1,14 @@
 /**
- * lib/crossing_gallery.js
+ * crossing_gallery/index.js
  * Crossing Gallery class
  */
 
 var http = require("http"),
     url = require("url"),
     fs = require("fs"),
-    Request = require("../lib/request"),
-    xml_parse = require("../lib/xml_parse"),
-    apis = require("../apis"),
-    modules = require("../modules"),
-    proxies = require("../proxies");
+    apis = require("./apis"),
+    modules = require("./modules"),
+    proxies = require("./proxies");
 
 function CrossingGallery() {
   this.listen = function (port, host, prefix) {
@@ -18,7 +16,7 @@ function CrossingGallery() {
     http.createServer(function (req, res) {
       var path = url.parse(req.url).pathname,
           ctrl = path.split(prefix)[1],
-          modules = "../modules/";
+          modules = "./modules/";
       
       if (ctrl) {
         ctrl = ctrl.split("/");

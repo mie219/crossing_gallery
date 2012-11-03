@@ -1,16 +1,20 @@
 /**
- * lib/request.js
+ * crossing_gallery/libs/request.js
  * Request
  */
 
 var http = require("http");
 
-function Request(host) {
-  this.get = function (options, callback) {
+function request(host) {
+  var req = {};
+  
+  req.get = function (options, callback) {
     options.method = "GET";
     options.host = options.host ? options.host : host;
     send(options, callback);
   };
+  
+  return req;
 }
 
 function send(options, callback) {
@@ -49,4 +53,4 @@ function send(options, callback) {
   req.end();
 }
 
-module.exports = Request;
+module.exports = request;

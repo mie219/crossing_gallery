@@ -1,5 +1,5 @@
 /*
- * proxies/index.js
+ * crossing_gallery/proxies/index.js
  * proxy index
  */
 

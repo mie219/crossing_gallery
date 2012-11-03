@@ -11,7 +11,7 @@ var proxy_port = 8888,
 var fs = require("fs"),
     proxy = require("http-proxy"),
     nws = require("node-web-server"),
-    CrossingGallery = require("./lib/crossing_gallery.js");
+    CrossingGallery = require("./crossing_gallery");
 
 // create logs dir
 if (! fs.existsSync(__dirname + "/logs"))

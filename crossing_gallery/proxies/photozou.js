@@ -1,13 +1,12 @@
 /*
- * apis/photozou.js
+ * crossing_gallery/apis/photozou.js
  * photozou API wrapper
  */
 
-var Request = require("../lib/request"),
-    xml_parse = require("../lib/xml_parse");
+var libs = require("../libs");
 
 function API() {
-  var req = new Request("api.photozou.jp");
+  var req = libs.request("api.photozou.jp");
   
   this.search = function (options, callback) {
     var path = "/rest/search_public",
@@ -20,7 +19,7 @@ function API() {
       path: path,
       queries: queries
     }, function (res) {
-      var photos = xml_parse(res, "info > photo");
+      var photos = libs.xml_parse(res, "info > photo");
       
       // format photos info
       photos = photos.map(function (photo) {

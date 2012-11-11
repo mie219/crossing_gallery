@@ -1,12 +1,12 @@
 /*
- * crossing_gallery/apis/photozou.js
+ * crossing_gallery/proxies/photozou.js
  * photozou API wrapper
  */
 
-var libs = require("../libs");
-
-function API() {
-  var req = libs.request("api.photozou.jp");
+function Proxy() {
+  var self = libs = this.libs;
+  
+  var req = new libs.request("api.photozou.jp");
   
   this.search = function (options, callback) {
     var path = "/rest/search_public",
@@ -40,4 +40,4 @@ function API() {
   };
 }
 
-module.exports = new API();
+module.exports = Proxy;

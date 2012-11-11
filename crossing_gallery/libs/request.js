@@ -3,19 +3,18 @@
  * Request
  */
 
-var http = require("http");
+var http = require("http"),
+    fs = require("fs");
 
-function request(host) {
-  var req = {};
-  
-  req.get = function (options, callback) {
-    options.method = "GET";
-    options.host = options.host ? options.host : host;
-    send(options, callback);
-  };
-  
-  return req;
+function Request(host) {
+  this.host = host;
 }
+
+Request.prototype.get = function (options, callback) {
+  options.method = "GET";
+  options.host = options.host ? options.host : this.host;
+  send(options, callback);
+};
 
 function send(options, callback) {
   var reqOpt = {
@@ -43,7 +42,7 @@ function send(options, callback) {
     });
     res.on("end", function () {
       callback(data);
-    })
+    });
   });
   
   req.on("error", function (e) {
@@ -53,4 +52,4 @@ function send(options, callback) {
   req.end();
 }
 
-module.exports = request;
+module.exports = Request;

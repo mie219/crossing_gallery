@@ -12,12 +12,11 @@
   },
   "devDependencies": {
     "mocha": "1.6.0",
-    "should": "1.2.0"
+    "should": "1.2.0",
+    "sinon": "1.5.0"
   },
   "scripts": {
-    "test": "node_modules/.bin/mocha",
-    "install": "node installer/install",
-    "uninstall": "node installer/uninstall"
+    "test": "mocha"
   },
   "engines": {
     "node": "0.8.x"

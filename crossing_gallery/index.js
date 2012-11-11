@@ -3,12 +3,16 @@
  * Crossing Gallery class
  */
 
-var http = require("http"),
+var fs = require("fs"),
     url = require("url"),
-    fs = require("fs"),
-    apis = require("./apis"),
-    modules = require("./modules"),
-    proxies = require("./proxies");
+    http = require("http"),
+    libs = require("./libs");
+
+var methods = {
+  apis    : require("./apis"),
+  modules : require("./modules"),
+  proxies : require("./proxies")
+};
 
 function CrossingGallery() {
   this.listen = function (port, host, prefix) {
@@ -40,10 +44,15 @@ function CrossingGallery() {
   };
 }
 
-CrossingGallery.prototype = {
-  apis: apis,
-  modules: modules,
-  proxies: proxies
-};
+// libs の継承
+Object.keys(methods).forEach(function (name) {
+  var objects = methods[name];
+  Object.keys(objects).forEach(function (name) {
+    var constructor = objects[name];
+    constructor.prototype.libs = libs;
+    objects[name] = new constructor;
+  });
+  CrossingGallery.prototype[name] = objects;
+});
 
 module.exports = CrossingGallery;

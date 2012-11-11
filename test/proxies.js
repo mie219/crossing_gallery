@@ -4,27 +4,37 @@
  */
 
 var CrossingGallery = require("../crossing_gallery"),
-    should = require("should");
+    should = require("should"),
+    sinon = require("sinon"),
+    fs = require("fs");
 
 var cg = new CrossingGallery();
 
 describe("Proxies", function () {
   var proxies = cg.proxies;
   
-  Object.keys(proxies).forEach(function (proxy) {
-    describe("." + proxy, function () {
+  Object.keys(proxies).forEach(function (name) {
+    var proxy = proxies[name];
+    
+    describe("." + name, function () {
       describe(".search", function () {
         var photos = [];
         
         before(function (done) {
-          proxies[proxy].search({
-            limit: 1,
+          var wrap = sinon.wrapMethod(proxy.libs.request.prototype, "get", function (options, callback) {
+            var data = fs.readFileSync(__dirname + "/data/proxies." + name + ".search.test", "utf8");
+            callback(data);
+          });
+          
+          proxy.search({
+            limit: 25,
             keyword: "ねこ"
           }, function (data) {
             photos = data;
-            
             done();
           });
+          
+          wrap.restore();
         });
         
         it("検索結果は要素が1つ以上の配列", function () {

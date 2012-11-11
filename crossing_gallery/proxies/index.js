@@ -4,5 +4,6 @@
  */
 
 module.exports = {
-  photozou: require("./photozou.js")
+  photozou : require("./photozou"),
+  twitpic  : require("./twitpic")
 };

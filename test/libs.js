@@ -8,7 +8,7 @@ var libs = require("../crossing_gallery/libs"),
 
 describe("Libraries", function () {
   describe("request", function () {
-    var request = libs.request();
+    var request = new libs.request("");
     
     describe(".get", function () {
       it("get method の存在", function () {

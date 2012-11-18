@@ -49,7 +49,7 @@ Object.keys(methods).forEach(function (name) {
   var objects = methods[name];
   Object.keys(objects).forEach(function (name) {
     var constructor = objects[name];
-    constructor.prototype.libs = libs;
+    constructor.prototype = libs;
     objects[name] = new constructor;
   });
   CrossingGallery.prototype[name] = objects;

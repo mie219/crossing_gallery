@@ -4,22 +4,18 @@
  */
 
 function Proxy() {
-  var self = libs = this.libs;
-  
-  var req = new libs.request("api.photozou.jp");
-  
-  this.search = function (options, callback) {
+  var self = this,
+      req = new this.request("api.photozou.jp");
+      
+  this.search = function (options) {
     var path = "/rest/search_public",
         queries = options || {};
-    
-    if (typeof options !== "object")
-      callback = options;
     
     req.get({
       path: path,
       queries: queries
     }, function (res) {
-      var photos = libs.xml_parse(res, "info > photo");
+      var photos = self.xml_parse(res, "info > photo");
       
       // format photos info
       photos = photos.map(function (photo) {
@@ -31,12 +27,11 @@ function Proxy() {
         };
       });
       
-      callback(photos);
-    });
-  };
-  
-  this.public = function () {
+      this.data = photos;
+      this.emit("success");
+    }.bind(this));
     
+    return this;
   };
 }
 

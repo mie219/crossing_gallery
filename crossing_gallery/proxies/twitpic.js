@@ -4,18 +4,15 @@
  */
 
 function Proxy() {
-  var self = libs = this.libs;
+  var req = new this.request("api.twitpic.com");
   
-  var req = new libs.request("api.twitpic.com");
-  
-  this.search = function (options, callback) {
+  this.search = function (options) {
     var path = "/2/tags/show.json",
         queries = options || {};
     
-    if (typeof options !== "object") {
-      callback = options;
+    if (typeof options !== "object")
       queries.tag = options.keyword ? options.keyword : "test";
-    } else
+    else
       queries.tag = "test";
     
     req.get({
@@ -34,12 +31,11 @@ function Proxy() {
         };
       });
       
-      callback(photos);
-    });
-  };
-  
-  this.public = function () {
+      this.data = photos;
+      this.emit("success");
+    }.bind(this));
     
+    return this;
   };
 }
 

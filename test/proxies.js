@@ -21,16 +21,19 @@ describe("Proxies", function () {
         var photos = [];
         
         before(function (done) {
-          var wrap = sinon.wrapMethod(proxy.libs.request.prototype, "get", function (options, callback) {
-            var data = fs.readFileSync(__dirname + "/data/proxies." + name + ".search.test", "utf8");
-            callback(data);
+          var wrap = sinon.wrapMethod(proxy.request.prototype, "get", function (options, callback) {
+            var data = fs.readFile(__dirname + "/data/proxies." + name + ".search.test", "utf8", function (err, data) {
+              if (err)
+                throw err;
+              callback(data);
+            });
           });
           
           proxy.search({
             limit: 25,
             keyword: "ねこ"
-          }, function (data) {
-            photos = data;
+          }).on("success", function () {
+            photos = this.data;
             done();
           });
           

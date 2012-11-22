@@ -1,6 +1,6 @@
 {
   "name": "crossing_gallery",
-  "description": "This is a web service which can search several image sharing service and display it.",
+  "description": "This is a web service which can search several images from image sharing sites and displays them.",
   "keywords": [
     "gallery"
   ],

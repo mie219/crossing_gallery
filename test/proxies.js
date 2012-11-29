@@ -46,12 +46,20 @@ describe("Proxies", function () {
           photos.should.not.be.empty;
         });
         
-        it("検索結果は正しいオブジェクト", function () {
+        it("検索結果は正しいフォーマット", function () {
           photos.forEach(function (photo) {
             photo.should.have.property("title");
+            
             photo.should.have.property("url");
+            photo.url.should.not.be.empty;
+            photo.url.should.match(/^https?:\/\/.+$/);
+            
             photo.should.have.property("original");
+            photo.url.should.not.be.empty;
+            photo.url.should.match(/^https?:\/\/.+$/);
+            
             photo.should.have.property("site");
+            photo.site.should.not.be.empty;
           });
         });
       });

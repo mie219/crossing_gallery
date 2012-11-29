@@ -4,9 +4,8 @@
  */
 
 function Proxy() {
-  var self = this,
-      req = new this.request("api.photozou.jp");
-      
+  var req = new this.request("api.photozou.jp");
+  
   this.search = function (options) {
     var path = "/rest/search_public",
         queries = options || {};
@@ -15,7 +14,7 @@ function Proxy() {
       path: path,
       queries: queries
     }, function (res) {
-      var photos = self.xml_parse(res, "info > photo");
+      var photos = this.xml_parse(res, "info > photo");
       
       // format photos info
       photos = photos.map(function (photo) {

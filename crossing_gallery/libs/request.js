@@ -8,12 +8,13 @@ var http = require("http"),
 
 function Request(host) {
   this.host = host;
+  this.send = send;
 }
 
 Request.prototype.get = function (options, callback) {
   options.method = "GET";
   options.host = options.host ? options.host : this.host;
-  send(options, callback);
+  this.send(options, callback);
 };
 
 function send(options, callback) {

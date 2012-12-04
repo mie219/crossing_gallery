@@ -22,7 +22,8 @@ describe("Proxies", function () {
         
         before(function (done) {
           var wrap = sinon.wrapMethod(proxy.request.prototype, "get", function (options, callback) {
-            var data = fs.readFile(__dirname + "/data/proxies." + name + ".search.test", "utf8", function (err, data) {
+            var test_file = __dirname + "/data/proxies." + name + ".search.test";
+            var data = fs.readFile(test_file, "utf8", function (err, data) {
               if (err)
                 throw err;
               callback(data);

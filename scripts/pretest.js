@@ -5,6 +5,7 @@
 
 var CrossingGallery = require("../crossing_gallery"),
     sinon = require("sinon"),
+    path = require("path"),
     fs = require("fs");
 
 var cg = new CrossingGallery();
@@ -16,7 +17,7 @@ Object.keys(proxies).forEach(function (name) {
       test_file = "test/data/proxies." + name + ".search.test";
   
   // check test file exists
-  fs.exists(test_file, function (exists) {
+  (fs.exists || path.exists)(test_file, function (exists) {
     if (exists)
       return console.log("exists: %s", test_file);
     
@@ -30,7 +31,7 @@ Object.keys(proxies).forEach(function (name) {
     }
     
     // wrap request.get method
-    var wrap = sinon.wrapMethod(proxy.request.prototype, "get", function (options, callback) {
+    var wrap = sinon.wrapMethod(proxy.request.prototype, "get", function (options) {
       options.method = "GET";
       options.host = options.host ? options.host : this.host;
       this.send(options, save);
